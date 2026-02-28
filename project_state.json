@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "A fake hacking app with dramatic terminal effects and progress bars.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-add-an-animated-hacking-progress-bar-to-the-terminal-page-that-triggers-when-the-hack-command-is-entered-showing-a-multi-stage-progress-sequence-with-labels-like-bypassing-firewall-injecting-payload-extracting-data-and-a-dramatic-completion-message",
+      "title": "Add an animated hacking progress bar to the Terminal page that triggers when the 'hack' command is entered, showing a multi-stage progress sequence with labels like 'Bypassing firewall...', 'Injecting payload...', 'Extracting data...' and a dramatic completion message.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-animated-terminal-output-to-the-terminal-page-so-that-command-responses-are-printed-character-by-character-or-line-by-line-with-a-typewriter-effect-making-the-output-feel-more-dramatic-and-authentic",
+      "title": "Add animated terminal output to the Terminal page so that command responses are printed character-by-character or line-by-line with a typewriter effect, making the output feel more dramatic and authentic.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [],
+  "gameProjectType": "none",
+  "projectName": "Hacking App",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

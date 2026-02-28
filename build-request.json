@@ -1,0 +1,63 @@
+{
+  "kind": "build_request",
+  "title": "Enhance fake hacking app with more dramatic effects",
+  "projectName": "Fake Hacker",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add an animated hacking progress bar to the Terminal page that triggers when the 'hack' command is entered, showing a multi-stage progress sequence with labels like 'Bypassing firewall...', 'Injecting payload...', 'Extracting data...' and a dramatic completion message.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Hacking up"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Running the 'hack' command in the terminal triggers a visible animated progress bar",
+        "Progress bar advances through at least 3 labeled stages with realistic hacker-themed labels",
+        "Each stage completes with a short delay to simulate real processing",
+        "A dramatic success or failure message is displayed upon completion",
+        "Progress bar matches the existing terminal green color theme and monospace font styling"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add animated terminal output to the Terminal page so that command responses are printed character-by-character or line-by-line with a typewriter effect, making the output feel more dramatic and authentic.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Hacking up"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Command responses in the terminal appear with a typewriter/streaming animation instead of instantly",
+        "Animation speed is fast enough to feel snappy but slow enough to be visually readable",
+        "Multiple simultaneous output lines animate sequentially",
+        "Existing terminal commands (help, scan, trace, decrypt, exploit, etc.) all use the animated output",
+        "Animation does not block user from typing the next command after it finishes"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "Preserve the existing terminal green OKLCH color theme and CRT scanline overlay",
+    "All new UI must use monospace font and match the existing hacker/terminal aesthetic"
+  ],
+  "nonGoals": [
+    "Adding real network or backend functionality",
+    "Changing the Scanner or Profile tabs",
+    "Adding new navigation tabs or pages",
+    "Modifying the backend Motoko actor"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-an-animated-hacking-progress-bar-to-the-terminal-page-that-triggers-when-the-hack-command-is-entered-showing-a-multi-stage-progress-sequence-with-labels-like-bypassing-firewall-injecting-payload-extracting-data-and-a-dramatic-completion-message",
+      "featureTitle": "Add an animated hacking progress bar to the Terminal page that triggers when the 'hack' command is entered, showing a multi-stage progress sequence with labels like 'Bypassing firewall...', 'Injecting payload...', 'Extracting data...' and a dramatic completion message.",
+      "files": [
+        "frontend/src/components/HackProgressBar.tsx",
+        "frontend/src/hooks/useCommandProcessor.ts",
+        "frontend/src/hooks/useHackProgress.ts",
+        "frontend/src/pages/Terminal.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-animated-terminal-output-to-the-terminal-page-so-that-command-responses-are-printed-character-by-character-or-line-by-line-with-a-typewriter-effect-making-the-output-feel-more-dramatic-and-authentic",
+      "featureTitle": "Add animated terminal output to the Terminal page so that command responses are printed character-by-character or line-by-line with a typewriter effect, making the output feel more dramatic and authentic.",
+      "files": [
+        "frontend/src/components/TypewriterOutput.tsx",
+        "frontend/src/hooks/useTypewriter.ts",
+        "frontend/src/pages/Terminal.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

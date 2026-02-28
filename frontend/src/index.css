@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: oklch(0.06 0.015 145);
+    --foreground: oklch(0.85 0.22 145);
+    --card: oklch(0.08 0.02 145);
+    --card-foreground: oklch(0.85 0.22 145);
+    --popover: oklch(0.08 0.02 145);
+    --popover-foreground: oklch(0.85 0.22 145);
+    --primary: oklch(0.85 0.22 145);
+    --primary-foreground: oklch(0.06 0.015 145);
+    --secondary: oklch(0.12 0.03 145);
+    --secondary-foreground: oklch(0.65 0.12 145);
+    --muted: oklch(0.12 0.03 145);
+    --muted-foreground: oklch(0.45 0.08 145);
+    --accent: oklch(0.75 0.15 200);
+    --accent-foreground: oklch(0.06 0.015 145);
+    --destructive: oklch(0.6 0.22 25);
+    --destructive-foreground: oklch(0.95 0.05 25);
+    --border: oklch(0.25 0.08 145);
+    --input: oklch(0.12 0.03 145);
+    --ring: oklch(0.85 0.22 145);
+    --radius: 0.25rem;
+
+    /* Terminal-specific tokens */
+    --terminal-green: oklch(0.85 0.22 145);
+    --terminal-green-bright: oklch(0.95 0.25 145);
+    --terminal-green-dim: oklch(0.55 0.12 145);
+    --terminal-red: oklch(0.6 0.22 25);
+    --terminal-yellow: oklch(0.82 0.18 95);
+    --terminal-cyan: oklch(0.75 0.15 200);
+    --terminal-bg: oklch(0.06 0.015 145);
+    --terminal-surface: oklch(0.09 0.02 145);
+  }
+
+  .dark {
+    --background: oklch(0.06 0.015 145);
+    --foreground: oklch(0.85 0.22 145);
+    --card: oklch(0.08 0.02 145);
+    --card-foreground: oklch(0.85 0.22 145);
+    --popover: oklch(0.08 0.02 145);
+    --popover-foreground: oklch(0.85 0.22 145);
+    --primary: oklch(0.85 0.22 145);
+    --primary-foreground: oklch(0.06 0.015 145);
+    --secondary: oklch(0.12 0.03 145);
+    --secondary-foreground: oklch(0.65 0.12 145);
+    --muted: oklch(0.12 0.03 145);
+    --muted-foreground: oklch(0.45 0.08 145);
+    --accent: oklch(0.75 0.15 200);
+    --accent-foreground: oklch(0.06 0.015 145);
+    --destructive: oklch(0.6 0.22 25);
+    --destructive-foreground: oklch(0.95 0.05 25);
+    --border: oklch(0.25 0.08 145);
+    --input: oklch(0.12 0.03 145);
+    --ring: oklch(0.85 0.22 145);
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body {
+    background-color: oklch(0.06 0.015 145);
+    color: oklch(0.85 0.22 145);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.08 0.02 145);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.3 0.08 145);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.5 0.12 145);
+  }
+}
+
+@layer components {
+  /* Terminal input */
+  .terminal-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: oklch(0.95 0.25 145);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    caret-color: oklch(0.85 0.22 145);
+    width: 100%;
+  }
+
+  .terminal-input::placeholder {
+    color: oklch(0.3 0.06 145);
+  }
+
+  .terminal-input:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Glitch text effect */
+  .glitch-text {
+    position: relative;
+    animation: glitch 4s infinite;
+  }
+
+  /* CRT scanlines */
+  .scanlines {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      oklch(0 0 0 / 0.03) 2px,
+      oklch(0 0 0 / 0.03) 4px
+    );
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* Blink cursor */
+  .blink-cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  /* Terminal glow */
+  .terminal-glow {
+    text-shadow: 0 0 8px oklch(0.85 0.22 145 / 0.6);
+  }
+
+  /* Flicker */
+  .flicker {
+    animation: flicker 0.15s infinite;
+  }
+}
+
+/* Keyframe animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes glitch {
+  0%, 90%, 100% {
+    transform: translate(0);
+    text-shadow: 0 0 10px oklch(0.85 0.22 145 / 0.8);
+  }
+  91% {
+    transform: translate(-2px, 1px);
+    text-shadow: 2px 0 oklch(0.75 0.15 200 / 0.7), -2px 0 oklch(0.6 0.22 25 / 0.7);
+  }
+  92% {
+    transform: translate(2px, -1px);
+    text-shadow: -2px 0 oklch(0.75 0.15 200 / 0.7), 2px 0 oklch(0.6 0.22 25 / 0.7);
+  }
+  93% {
+    transform: translate(0);
+    text-shadow: 0 0 10px oklch(0.85 0.22 145 / 0.8);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  25% { opacity: 0.85; }
+  50% { opacity: 0.95; }
+  75% { opacity: 0.8; }
+}
+
+@keyframes scanline-move {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes matrix-fall {
+  0% { transform: translateY(-100%); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 4px oklch(0.85 0.22 145 / 0.4); }
+  50% { box-shadow: 0 0 12px oklch(0.85 0.22 145 / 0.8); }
+}

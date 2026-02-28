@@ -1,0 +1,66 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-28T19:51:38.933Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add an animated hacking progress bar to the Terminal page that triggers when the 'hack' command is entered, showing a multi-stage progress sequence with labels like 'Bypassing firewall...', 'Injecting payload...', 'Extracting data...' and a dramatic completion message.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useHackProgress.ts",
+          "frontend/src/components/HackProgressBar.tsx",
+          "frontend/src/hooks/useCommandProcessor.ts",
+          "frontend/src/pages/Terminal.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useHackProgress.ts",
+          "frontend/src/components/HackProgressBar.tsx",
+          "frontend/src/hooks/useCommandProcessor.ts",
+          "frontend/src/pages/Terminal.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Add animated terminal output to the Terminal page so that command responses are printed character-by-character or line-by-line with a typewriter effect, making the output feel more dramatic and authentic.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useTypewriter.ts",
+          "frontend/src/components/TypewriterOutput.tsx",
+          "frontend/src/pages/Terminal.tsx",
+          "frontend/src/hooks/useTerminalScript.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useTypewriter.ts",
+          "frontend/src/components/TypewriterOutput.tsx",
+          "frontend/src/pages/Terminal.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/HackProgressBar.tsx",
+    "frontend/src/components/TypewriterOutput.tsx",
+    "frontend/src/hooks/useCommandProcessor.ts",
+    "frontend/src/hooks/useHackProgress.ts",
+    "frontend/src/hooks/useTypewriter.ts",
+    "frontend/src/index.css",
+    "frontend/src/pages/Terminal.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

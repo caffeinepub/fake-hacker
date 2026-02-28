@@ -1,0 +1,18 @@
+{
+  "frontend/src/index.css": "Global styles with hacker/terminal OKLCH theme, Share Tech Mono font, CRT scanline effects, glitch/blink/flicker/shimmer keyframe animations, and terminal utility classes including the new shimmer animation for the progress bar.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Share Tech Mono font family, terminal color tokens (green, red, yellow, cyan, bg, surface), terminal box shadows, and hacker-themed keyframe animations.",
+  "frontend/src/hooks/useTerminalScript.ts": "Hook managing the auto-run fake hacking boot sequence with timed line-by-line output, timestamps, and line type classification.",
+  "frontend/src/hooks/useCommandProcessor.ts": "Modified command processor hook that now returns a CommandResult object (with shouldClear and hackTarget fields) instead of a boolean, and routes the 'hack' command to the Terminal component for progress bar rendering.",
+  "frontend/src/hooks/useFakeScan.ts": "Hook managing fake network scan state including animated progress, timed population of fake IP/port/vulnerability results, and scan completion summary.",
+  "frontend/src/components/MatrixRain.tsx": "Canvas-based matrix rain animation component with falling Japanese/hex characters in terminal green, used as background on the Terminal page.",
+  "frontend/src/components/ScanlineOverlay.tsx": "Fixed full-screen overlay component providing CRT scanline texture, animated moving scan line, and vignette effect across the entire app.",
+  "frontend/src/components/BottomNav.tsx": "Bottom navigation bar with three tabs (Terminal, Scanner, Profile) styled with terminal green active state, glow effects, and monospace typography.",
+  "frontend/src/pages/Terminal.tsx": "Interactive fake terminal page integrating the HackProgressBar and per-line typewriter animation for all command responses, with a queue-based animation system, hack progress state management, and dynamic header/input status indicators.",
+  "frontend/src/pages/Scanner.tsx": "Fake network vulnerability scanner page with Start Scan button, animated progress bar, scrolling results list with color-coded VULNERABLE/OPEN/ENCRYPTED/FILTERED badges and CVE labels.",
+  "frontend/src/pages/Profile.tsx": "Fake hacker profile page displaying alias, rank, 6 stat cards, skill progress bars, and 7 completed operation entries with timestamps and operation types.",
+  "frontend/src/App.tsx": "Main app component with tab-based navigation between Terminal/Scanner/Profile pages, CRT overlay integration, and attribution footer.",
+  "frontend/src/hooks/useHackProgress.ts": "Custom hook managing the multi-stage fake hacking progress animation, tracking stage index, progress percentage, status (idle/running/success/failure), and completion message, with start/reset methods and timer cleanup.",
+  "frontend/src/components/HackProgressBar.tsx": "Animated terminal-themed progress bar component displaying hack stages with status indicators, a shimmer-animated fill bar, and a dramatic success/failure completion message styled in the existing green/red OKLCH color scheme. Removed the broken HackProgressBarProps interface and unused HackProgressState import that caused the TypeScript error.",
+  "frontend/src/hooks/useTypewriter.ts": "Custom hook implementing a typewriter character-by-character animation for arrays of text lines, with configurable char/line delays, an isComplete flag, and proper timer cleanup on unmount.",
+  "frontend/src/components/TypewriterOutput.tsx": "React component that renders animated typewriter text using the useTypewriter hook, displaying lines with a blinking cursor during animation and calling onComplete when finished."
+}
