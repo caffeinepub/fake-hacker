@@ -16,8 +16,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        mono: ['"Share Tech Mono"', '"Courier New"', 'Courier', 'monospace'],
-        terminal: ['"Share Tech Mono"', '"Courier New"', 'Courier', 'monospace'],
+        sans: ['Rajdhani', 'Arial', 'sans-serif'],
+        tactical: ['Rajdhani', 'Arial', 'sans-serif'],
+        display: ['Orbitron', 'Arial', 'sans-serif'],
       },
       colors: {
         border: 'oklch(var(--border))',
@@ -70,17 +71,19 @@ export default {
           border: 'oklch(var(--sidebar-border))',
           ring: 'oklch(var(--sidebar-ring))'
         },
-        // Hacker theme tokens
-        terminal: {
-          green: 'oklch(0.85 0.22 145)',
-          'green-dim': 'oklch(0.55 0.15 145)',
-          'green-bright': 'oklch(0.95 0.25 145)',
-          bg: 'oklch(0.06 0.015 145)',
-          surface: 'oklch(0.1 0.025 145)',
-          border: 'oklch(0.25 0.08 145)',
-          red: 'oklch(0.6 0.22 25)',
-          yellow: 'oklch(0.82 0.18 95)',
-          cyan: 'oklch(0.8 0.15 200)',
+        // Free Fire theme tokens
+        ff: {
+          primary: 'oklch(0.72 0.19 42)',
+          'primary-bright': 'oklch(0.82 0.22 42)',
+          gold: 'oklch(0.82 0.18 80)',
+          'gold-bright': 'oklch(0.90 0.20 85)',
+          red: 'oklch(0.58 0.22 25)',
+          dark: 'oklch(0.08 0.01 30)',
+          surface: 'oklch(0.11 0.015 30)',
+          'surface-2': 'oklch(0.14 0.02 30)',
+          border: 'oklch(0.22 0.03 35)',
+          text: 'oklch(0.92 0.04 60)',
+          'text-muted': 'oklch(0.55 0.05 50)',
         }
       },
       borderRadius: {
@@ -90,8 +93,10 @@ export default {
       },
       boxShadow: {
         xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-        'terminal': '0 0 15px oklch(0.85 0.22 145 / 0.3), 0 0 30px oklch(0.85 0.22 145 / 0.1)',
-        'terminal-lg': '0 0 30px oklch(0.85 0.22 145 / 0.4), 0 0 60px oklch(0.85 0.22 145 / 0.15)',
+        'ff': '0 0 15px oklch(0.72 0.19 42 / 0.3), 0 0 30px oklch(0.72 0.19 42 / 0.1)',
+        'ff-lg': '0 0 30px oklch(0.72 0.19 42 / 0.4), 0 0 60px oklch(0.72 0.19 42 / 0.15)',
+        'ff-gold': '0 0 15px oklch(0.82 0.18 80 / 0.3), 0 0 30px oklch(0.82 0.18 80 / 0.1)',
+        'ff-gold-lg': '0 0 30px oklch(0.82 0.18 80 / 0.5), 0 0 60px oklch(0.82 0.18 80 / 0.2)',
       },
       keyframes: {
         'accordion-down': {
@@ -102,44 +107,25 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' }
         },
-        'matrix-fall': {
-          '0%': { transform: 'translateY(-100%)', opacity: '1' },
-          '100%': { transform: 'translateY(100vh)', opacity: '0' }
+        'ff-pulse': {
+          '0%, 100%': { boxShadow: '0 0 6px oklch(0.72 0.19 42 / 0.4)' },
+          '50%': { boxShadow: '0 0 18px oklch(0.72 0.19 42 / 0.8), 0 0 30px oklch(0.72 0.19 42 / 0.3)' }
         },
-        'glitch': {
-          '0%, 90%, 100%': { transform: 'translate(0)', filter: 'none' },
-          '91%': { transform: 'translate(-2px, 1px)', filter: 'hue-rotate(90deg)' },
-          '93%': { transform: 'translate(2px, -1px)', filter: 'hue-rotate(-90deg)' },
-          '95%': { transform: 'translate(-1px, 2px)', filter: 'none' },
+        'ff-pulse-gold': {
+          '0%, 100%': { boxShadow: '0 0 6px oklch(0.82 0.18 80 / 0.4)' },
+          '50%': { boxShadow: '0 0 18px oklch(0.82 0.18 80 / 0.8), 0 0 30px oklch(0.82 0.18 80 / 0.3)' }
         },
-        'blink': {
-          '0%, 49%': { opacity: '1' },
-          '50%, 100%': { opacity: '0' }
-        },
-        'flicker': {
-          '0%, 95%, 100%': { opacity: '1' },
-          '96%': { opacity: '0.8' },
-          '97%': { opacity: '1' },
-          '98%': { opacity: '0.6' },
-          '99%': { opacity: '1' },
-        },
-        'pulse-glow': {
-          '0%, 100%': { boxShadow: '0 0 5px oklch(0.85 0.22 145 / 0.3)' },
-          '50%': { boxShadow: '0 0 20px oklch(0.85 0.22 145 / 0.6), 0 0 40px oklch(0.85 0.22 145 / 0.2)' }
-        },
-        'scan-line': {
-          '0%': { top: '-10%' },
-          '100%': { top: '110%' }
+        'shimmer': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(400%)' }
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'glitch': 'glitch 8s infinite',
-        'blink': 'blink 1s step-end infinite',
-        'flicker': 'flicker 6s infinite',
-        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-        'scan-line': 'scan-line 4s linear infinite',
+        'ff-pulse': 'ff-pulse 2s ease-in-out infinite',
+        'ff-pulse-gold': 'ff-pulse-gold 2s ease-in-out infinite',
+        'shimmer': 'shimmer 2s infinite',
       }
     }
   },

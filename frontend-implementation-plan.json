@@ -1,71 +1,179 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Enhance fake hacking app with more dramatic effects",
+  "title": "Free Fire Panel App Frontend Implementation",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Add animated hacking progress bar to Terminal page that triggers on 'hack' command with multi-stage progress sequence and dramatic completion",
+      "summary": "Rebuild the application as a Free Fire game panel app, replacing all hacker/terminal theme content with a Free Fire-themed interface",
       "acceptanceCriteria": [
-        "Running the 'hack' command in the terminal triggers a visible animated progress bar",
-        "Progress bar advances through at least 3 labeled stages with realistic hacker-themed labels",
-        "Each stage completes with a short delay to simulate real processing",
-        "A dramatic success or failure message is displayed upon completion",
-        "Progress bar matches the existing terminal green color theme and monospace font styling"
+        "App title and branding reference Free Fire",
+        "All hacker/matrix/terminal aesthetic is replaced with a Free Fire game UI aesthetic (dark military/battle royale style with orange/red/gold accent colors)",
+        "Navigation tabs reflect Free Fire panel sections"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useHackProgress.ts",
-          "operation": "create",
-          "description": "Create a custom React hook that manages the hacking progress animation state, tracking the current stage index, progress percentage, stage labels, and completion status. The hook should expose methods to start, advance, and complete the progress sequence, along with the current stage data for rendering."
-        },
-        {
-          "path": "frontend/src/components/HackProgressBar.tsx",
-          "operation": "create",
-          "description": "Create a React component that renders an animated progress bar with stage labels for the hacking sequence. The component should display the current stage label (e.g., 'Bypassing firewall...', 'Injecting payload...', 'Extracting data...'), a visual progress indicator using terminal-green colors matching the existing theme, and a completion message. Use monospace font and OKLCH color variables from the existing theme (--terminal-green, --terminal-green-bright). Include smooth CSS transitions for progress bar width changes."
-        },
-        {
-          "path": "frontend/src/hooks/useCommandProcessor.ts",
+          "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Modify the command processor to detect the 'hack' command and trigger the hacking progress sequence instead of returning static text. Update the command handler to return a special flag or state indicating that a progress animation should be displayed, allowing the Terminal component to render the HackProgressBar component when this command is executed."
+          "description": "Update the page title from 'Fake Hacker' to 'Free Fire Panel' to reflect the new app branding"
         },
         {
-          "path": "frontend/src/pages/Terminal.tsx",
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Integrate the HackProgressBar component into the Terminal page to display it when the 'hack' command is executed. Add conditional rendering logic to show the progress bar during the hacking sequence, hide the input field while the animation is active, and append the completion message to the terminal output history when the sequence finishes. Ensure the progress bar appears below the existing terminal output and above the command input area."
+          "description": "Remove the CRT scanline overlay and caffeine.ai attribution footer. Replace the Terminal/Scanner/Profile tab navigation with Free Fire panel sections: Dashboard, Weapons, Characters, and Matches. Remove MatrixRain and ScanlineOverlay components. Update the layout to use a Free Fire-themed structure with a header displaying the app logo/title and main content area for routing"
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Replace all terminal/hacker theme CSS (terminal-green colors, Share Tech Mono font, glitch animations, CRT scanlines) with Free Fire-themed styling: dark near-black background (#0a0a0a), orange/amber/gold accent colors (e.g., #ff6b35, #f7931e, #fbbf24), military-style typography (use a tactical sans-serif font like Rajdhani or Orbitron), subtle fire glow effects on accent elements using box-shadow and filter properties, and remove blink/glitch/flicker animations"
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Update the Tailwind theme configuration to replace terminal colors with Free Fire palette: primary accent as orange/amber (--color-ff-primary), dark background as near-black (--color-ff-dark), gold highlights (--color-ff-gold), and tactical red accents (--color-ff-red). Replace monospace fonts with military-style font families. Update box shadows to provide subtle fire glow effects instead of terminal glow. Remove hacker-themed keyframe animations and add new ones if needed for subtle fire or energy effects"
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Add typewriter effect to Terminal page command responses so output appears character-by-character or line-by-line for dramatic, authentic feel",
+      "summary": "Create a Dashboard/Home page showing Free Fire player stats overview with player nickname, UID, level, rank badge, K/D ratio, win rate, total matches played, and headshot percentage displayed as stylized cards",
       "acceptanceCriteria": [
-        "Command responses in the terminal appear with a typewriter/streaming animation instead of instantly",
-        "Animation speed is fast enough to feel snappy but slow enough to be visually readable",
-        "Multiple simultaneous output lines animate sequentially",
-        "Existing terminal commands (help, scan, trace, decrypt, exploit, etc.) all use the animated output",
-        "Animation does not block user from typing the next command after it finishes"
+        "Dashboard displays player nickname, UID, and level prominently",
+        "Rank badge is displayed with appropriate rank name (e.g., Heroic, Grandmaster)",
+        "K/D ratio, win rate, total matches, and headshot % are shown as stat cards",
+        "Layout is responsive and styled with Free Fire battle-royale aesthetic"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useTypewriter.ts",
+          "path": "frontend/src/pages/Dashboard.tsx",
           "operation": "create",
-          "description": "Create a custom React hook that implements a typewriter effect for animating text output. The hook should accept text or an array of lines, a typing speed parameter, and return the currently visible text along with an isComplete flag. Use requestAnimationFrame or setInterval to progressively reveal characters or lines at the specified speed, and clean up timers on unmount or when the animation completes."
+          "description": "Create the Dashboard page component displaying a Free Fire player stats overview. Show player nickname prominently at the top with UID below it. Display level as a circular badge or bar. Include a rank badge section showing rank name (e.g., 'Heroic', 'Grandmaster') with an icon or colored tier indicator. Layout stat cards in a responsive grid for K/D ratio, win rate (percentage), total matches played, and headshot percentage. Use static mock data for all stats. Apply Free Fire-themed styling with dark backgrounds, orange/gold accents, and card-based layouts with subtle glow effects on hover"
         },
         {
-          "path": "frontend/src/components/TypewriterOutput.tsx",
+          "path": "frontend/src/data/playerStats.ts",
           "operation": "create",
-          "description": "Create a React component that renders animated typewriter text using the useTypewriter hook. The component should accept output text (single line or array of lines) and color props, display the text with a typewriter animation effect, and emit an onComplete callback when the animation finishes. Use the monospace font and maintain the existing terminal styling."
+          "description": "Create a TypeScript module exporting static player stats data: playerNickname (string), playerUID (string), level (number), rankName (string, e.g., 'Heroic'), rankTier (number), kdRatio (number), winRate (number as percentage), totalMatches (number), headshotPercentage (number). Use realistic Free Fire example data"
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create a Weapons page listing popular Free Fire weapons with stats bars for damage, range, fire rate, reload speed, and magazine size, with filtering by weapon type",
+      "acceptanceCriteria": [
+        "Weapons list shows at least 10 popular Free Fire weapons",
+        "Each weapon card displays stat bars for key attributes",
+        "Filter buttons allow filtering by weapon category",
+        "Active filter is visually highlighted"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Weapons.tsx",
+          "operation": "create",
+          "description": "Create the Weapons page component displaying a list of Free Fire weapons as cards. Include filter buttons at the top for weapon categories: All, AR (Assault Rifle), SMG, Sniper, Shotgun, Pistol. Highlight the active filter with the Free Fire accent color (orange/amber). Each weapon card should display weapon name prominently and include horizontal stat bars for: damage (0-100), range (0-100), fire rate (0-100), reload speed (0-100), and magazine size (0-100). Use static weapon data imported from a separate data module. Layout cards in a responsive grid (2-3 columns on desktop, 1-2 on mobile). Apply Free Fire-themed styling with dark card backgrounds, orange/gold progress bars, and glow effects. Reference the generated weapon category icons at frontend/public/assets/generated/ff-weapon-icons.dim_512x128.png for filter buttons"
         },
         {
-          "path": "frontend/src/pages/Terminal.tsx",
-          "operation": "modify",
-          "description": "Integrate the TypewriterOutput component into the terminal output rendering logic. Replace the static output line rendering with the TypewriterOutput component for command responses. Manage a queue of pending outputs to ensure multiple lines animate sequentially. Store the fully-animated lines in terminal history so they remain visible after animation completes. Ensure the command input remains available and does not block after each animation finishes."
+          "path": "frontend/src/data/weapons.ts",
+          "operation": "create",
+          "description": "Create a TypeScript module exporting an array of at least 10 popular Free Fire weapons. Each weapon object should include: id (string), name (string, e.g., 'M1014', 'AK', 'M82B', 'Groza', 'SCAR', 'MP40', 'UMP', 'AWM', 'Kar98k', 'Desert Eagle'), type (enum: 'AR' | 'SMG' | 'Sniper' | 'Shotgun' | 'Pistol'), damage (number 0-100), range (number 0-100), fireRate (number 0-100), reloadSpeed (number 0-100), magazineSize (number 0-100). Use realistic Free Fire weapon stats for authenticity"
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create a Characters page listing Free Fire characters with their special abilities, ability descriptions, and cooldown/duration stats",
+      "acceptanceCriteria": [
+        "At least 8 Free Fire characters are listed",
+        "Each card shows character name, ability name, and description",
+        "Cards are displayed in a responsive grid",
+        "Page uses consistent Free Fire-themed styling"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Characters.tsx",
+          "operation": "create",
+          "description": "Create the Characters page component displaying Free Fire characters in a responsive grid (2-3 columns on desktop, 1-2 on mobile). Each character card should show: character name prominently at the top, ability name as a subtitle, ability description (2-3 sentences), and cooldown or duration stats if applicable (e.g., 'Cooldown: 50s', 'Duration: 10s'). Use static character data imported from a separate data module. Apply Free Fire-themed card styling with dark backgrounds, orange/gold borders or accents, and hover glow effects"
         },
         {
-          "path": "frontend/src/hooks/useTerminalScript.ts",
+          "path": "frontend/src/data/characters.ts",
+          "operation": "create",
+          "description": "Create a TypeScript module exporting an array of at least 8 popular Free Fire characters. Each character object should include: id (string), name (string, e.g., 'Alok', 'Chrono', 'Dimitri', 'K', 'Skyler', 'Hayato', 'DJ Alok', 'Moco'), abilityName (string), abilityDescription (string, 2-3 sentences), cooldown (optional string, e.g., '50s'), duration (optional string, e.g., '10s'). Use accurate Free Fire character ability information for authenticity"
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create a Match History page showing a list of simulated recent match entries with map name, placement, kills, damage dealt, survival time, and match mode",
+      "acceptanceCriteria": [
+        "At least 10 recent match entries are shown",
+        "Each entry shows placement, kills, damage, survival time, and mode",
+        "Booyah (1st place) entries are visually highlighted differently",
+        "Entries are listed in reverse chronological order"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Matches.tsx",
+          "operation": "create",
+          "description": "Create the Match History page component displaying a list of recent match entries. Each entry should be a card or row showing: map name (e.g., 'Bermuda', 'Purgatory', 'Kalahari'), placement (e.g., '#1 Booyah!', '#5', '#12'), kills (number), damage dealt (number), survival time (e.g., '18:42'), and match mode ('Classic', 'Clash Squad', or 'Ranked'). Visually highlight Booyah (1st place) entries with a gold/orange background or border glow. List entries in reverse chronological order (most recent first). Use static match data imported from a separate data module. Apply Free Fire-themed styling with dark backgrounds and accent colors"
+        },
+        {
+          "path": "frontend/src/data/matchHistory.ts",
+          "operation": "create",
+          "description": "Create a TypeScript module exporting an array of at least 10 simulated recent match entries. Each match object should include: id (string), mapName (string, e.g., 'Bermuda', 'Purgatory', 'Kalahari'), placement (number 1-50), kills (number), damageDealt (number), survivalTime (string in MM:SS format), mode (enum: 'Classic' | 'Clash Squad' | 'Ranked'), timestamp (Date or ISO string for sorting). Ensure at least one match has placement = 1 for Booyah highlighting. Order entries from most recent to oldest"
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Create a bottom navigation bar with tabs for Home (Dashboard), Weapons, Characters, and Matches, with the active tab visually highlighted",
+      "acceptanceCriteria": [
+        "Bottom nav has four tabs: Home, Weapons, Characters, Matches",
+        "Active tab is highlighted with accent color",
+        "Navigation switches pages without full reload",
+        "Nav bar is fixed at the bottom on mobile viewport"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BottomNav.tsx",
           "operation": "modify",
-          "description": "Update the boot script hook to work with the new typewriter effect by returning lines in a format compatible with TypewriterOutput, or by adding a flag indicating whether each line should be animated. Ensure the boot sequence uses the typewriter effect for a consistent dramatic experience when the Terminal page first loads."
+          "description": "Replace the existing Terminal/Scanner/Profile tabs with Free Fire panel tabs: Home (links to Dashboard), Weapons, Characters, and Matches. Update the active tab highlighting to use the Free Fire accent color (orange/amber) instead of terminal green. Remove any terminal-themed glow effects and apply Free Fire-themed styling (subtle fire glow on active tab). Ensure the component receives the current active tab via props and highlights it accordingly. The nav bar should remain fixed at the bottom on mobile viewports"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update the routing logic to wire the four Free Fire pages: Dashboard (as Home/default route), Weapons, Characters, and Matches. Pass the current active tab to the BottomNav component. Remove references to Terminal, Scanner, and Profile pages. Ensure navigation switches pages client-side without full reload using React state or a router"
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Apply a cohesive Free Fire-themed visual design across the entire app with dark background, orange/amber/gold accent colors, military/tactical typography, subtle fire glow effects, and a header showing the Free Fire Panel logo/title",
+      "acceptanceCriteria": [
+        "App-wide background is dark (e.g., #0a0a0a or similar near-black)",
+        "Primary accent color is orange or amber (not blue/purple)",
+        "Header displays app branding clearly",
+        "Glow or fire effects are applied to accent elements consistently",
+        "Font style feels tactical/military while remaining readable"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create a Header component displaying the Free Fire Panel branding. Include the generated app logo image at frontend/public/assets/generated/ff-panel-logo.dim_256x256.png on the left side, and the app title 'Free Fire Panel' next to it. Optionally include the generated banner image frontend/public/assets/generated/ff-header-banner.dim_1200x300.png as a background or decorative element. Apply Free Fire-themed styling with dark background and orange/gold text and accents. The header should be fixed at the top or positioned at the top of the main layout"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the new Header component into the App layout so it appears at the top of every page. Ensure the overall app background is set to dark near-black (#0a0a0a) and that Free Fire accent colors are applied consistently across all page transitions"
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Ensure the global CSS applies a dark near-black background (#0a0a0a or similar) to the body and root elements. Define CSS custom properties for Free Fire accent colors (e.g., --color-ff-primary: #ff6b35, --color-ff-gold: #fbbf24, --color-ff-red: #dc2626). Import a tactical/military-style font (e.g., Rajdhani, Orbitron, or Saira Condensed) from Google Fonts or use a web-safe fallback. Apply subtle fire glow effects to interactive elements using box-shadow (e.g., 0 0 10px rgba(255, 107, 53, 0.5)) and filter properties. Remove all terminal/hacker-themed styles completely"
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the Tailwind theme to include Free Fire-specific color tokens (ff-primary, ff-dark, ff-gold, ff-red) mapped to the CSS custom properties defined in index.css. Update fontFamily to use the new military/tactical fonts as defaults. Define utility classes for fire glow effects (e.g., glow-ff) using boxShadow. Remove all terminal-themed color tokens and utility classes"
         }
       ]
     }

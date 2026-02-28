@@ -1,63 +1,178 @@
 {
   "kind": "build_request",
-  "title": "Enhance fake hacking app with more dramatic effects",
-  "projectName": "Fake Hacker",
+  "title": "Free Fire Panel App",
+  "projectName": "Free Fire Panel",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add an animated hacking progress bar to the Terminal page that triggers when the 'hack' command is entered, showing a multi-stage progress sequence with labels like 'Bypassing firewall...', 'Injecting payload...', 'Extracting data...' and a dramatic completion message.",
+      "text": "Rebuild the application as a Free Fire game panel app. Replace all existing hacker/terminal theme content with a Free Fire-themed interface. The app should feel like an in-game companion panel for Free Fire players.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Hacking up"
+          "Free fire panel app"
         ]
       },
       "acceptanceCriteria": [
-        "Running the 'hack' command in the terminal triggers a visible animated progress bar",
-        "Progress bar advances through at least 3 labeled stages with realistic hacker-themed labels",
-        "Each stage completes with a short delay to simulate real processing",
-        "A dramatic success or failure message is displayed upon completion",
-        "Progress bar matches the existing terminal green color theme and monospace font styling"
+        "App title and branding reference Free Fire",
+        "All hacker/matrix/terminal aesthetic is replaced with a Free Fire game UI aesthetic (dark military/battle royale style with orange/red/gold accent colors)",
+        "Navigation tabs reflect Free Fire panel sections"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Add animated terminal output to the Terminal page so that command responses are printed character-by-character or line-by-line with a typewriter effect, making the output feel more dramatic and authentic.",
+      "text": "Create a Dashboard/Home page showing a Free Fire player stats overview: player nickname, UID, level, rank badge, K/D ratio, win rate, total matches played, and headshot percentage. Display stats as stylized cards.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Hacking up"
+          "Free fire panel app"
         ]
       },
       "acceptanceCriteria": [
-        "Command responses in the terminal appear with a typewriter/streaming animation instead of instantly",
-        "Animation speed is fast enough to feel snappy but slow enough to be visually readable",
-        "Multiple simultaneous output lines animate sequentially",
-        "Existing terminal commands (help, scan, trace, decrypt, exploit, etc.) all use the animated output",
-        "Animation does not block user from typing the next command after it finishes"
+        "Dashboard displays player nickname, UID, and level prominently",
+        "Rank badge is displayed with appropriate rank name (e.g., Heroic, Grandmaster)",
+        "K/D ratio, win rate, total matches, and headshot % are shown as stat cards",
+        "Layout is responsive and styled with Free Fire battle-royale aesthetic"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a Weapons page listing popular Free Fire weapons (e.g., M1014, AK, M82B, Groza, SCAR) with stats bars for damage, range, fire rate, reload speed, and magazine size. Allow filtering by weapon type (AR, SMG, Sniper, Shotgun, Pistol).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Free fire panel app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Weapons list shows at least 10 popular Free Fire weapons",
+        "Each weapon card displays stat bars for key attributes",
+        "Filter buttons allow filtering by weapon category",
+        "Active filter is visually highlighted"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create a Characters page listing Free Fire characters (e.g., Alok, Chrono, Dimitri, K, Skyler) with their special abilities, ability descriptions, and ability cooldown/duration stats. Each character card should show name, ability name, and a short description.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Free fire panel app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least 8 Free Fire characters are listed",
+        "Each card shows character name, ability name, and description",
+        "Cards are displayed in a responsive grid",
+        "Page uses consistent Free Fire-themed styling"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create a Match History page showing a list of simulated recent match entries. Each entry should display: map name, placement (e.g., #1 Booyah!, #5), kills, damage dealt, survival time, and match mode (Classic, Clash Squad, Ranked).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Free fire panel app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least 10 recent match entries are shown",
+        "Each entry shows placement, kills, damage, survival time, and mode",
+        "Booyah (1st place) entries are visually highlighted differently",
+        "Entries are listed in reverse chronological order"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Create a bottom navigation bar with tabs for: Home (Dashboard), Weapons, Characters, and Matches. The active tab should be visually highlighted with the Free Fire accent color.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Free fire panel app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Bottom nav has four tabs: Home, Weapons, Characters, Matches",
+        "Active tab is highlighted with accent color",
+        "Navigation switches pages without full reload",
+        "Nav bar is fixed at the bottom on mobile viewport"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Apply a cohesive Free Fire-themed visual design across the entire app: dark background (near-black), orange/amber/gold accent colors, military/tactical typography, subtle fire or energy glow effects on key UI elements, and a header showing the Free Fire Panel logo/title.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Free fire panel app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App-wide background is dark (e.g., #0a0a0a or similar near-black)",
+        "Primary accent color is orange or amber (not blue/purple)",
+        "Header displays app branding clearly",
+        "Glow or fire effects are applied to accent elements consistently",
+        "Font style feels tactical/military while remaining readable"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Clear all backend Motoko actor logic and replace it with a minimal actor that exposes no endpoints, since all data is frontend-only and statically defined.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Free fire panel app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "backend/main.mo compiles successfully as an empty or minimal actor",
+        "No stale endpoints from the previous hacker app remain"
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
-    "Preserve the existing terminal green OKLCH color theme and CRT scanline overlay",
-    "All new UI must use monospace font and match the existing hacker/terminal aesthetic"
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "All data (player stats, weapons, characters, match history) must be statically defined on the frontend — no backend data storage required",
+    "Do not use blue or purple as primary accent colors"
   ],
   "nonGoals": [
-    "Adding real network or backend functionality",
-    "Changing the Scanner or Profile tabs",
-    "Adding new navigation tabs or pages",
-    "Modifying the backend Motoko actor"
+    "Real Free Fire API integration or live player data fetching",
+    "User authentication or login functionality",
+    "In-app purchases or item shop features",
+    "Real-time match tracking or game overlay",
+    "Cheat tools, aimbots, or any exploit-related features"
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Free Fire panel app logo with flame and crosshair motif on dark background (ff-panel-logo.dim_256x256.png)",
+      "Battle royale dark banner with fire and smoke atmospheric effect (ff-header-banner.dim_1200x300.png)",
+      "Weapon category icon set: assault rifle, SMG, sniper, shotgun, pistol silhouettes in orange on transparent background (ff-weapon-icons.dim_512x128.png)"
+    ],
     "edits": []
   }
 }

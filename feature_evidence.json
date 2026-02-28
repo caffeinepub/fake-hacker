@@ -2,13 +2,13 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-an-animated-hacking-progress-bar-to-the-terminal-page-that-triggers-when-the-hack-command-is-entered-showing-a-multi-stage-progress-sequence-with-labels-like-bypassing-firewall-injecting-payload-extracting-data-and-a-dramatic-completion-message",
-      "featureTitle": "Add an animated hacking progress bar to the Terminal page that triggers when the 'hack' command is entered, showing a multi-stage progress sequence with labels like 'Bypassing firewall...', 'Injecting payload...', 'Extracting data...' and a dramatic completion message.",
+      "featureId": "feature-rebuild-the-application-as-a-free-fire-game-panel-app-replace-all-existing-hacker-terminal-theme-content-with-a-free-fire-themed-interface-the-app-should-feel-like-an-in-game-companion-panel-for-free-fire-players",
+      "featureTitle": "Rebuild the application as a Free Fire game panel app. Replace all existing hacker/terminal theme content with a Free Fire-themed interface. The app should feel like an in-game companion panel for Free Fire players.",
       "files": [
-        "frontend/src/components/HackProgressBar.tsx",
-        "frontend/src/hooks/useCommandProcessor.ts",
-        "frontend/src/hooks/useHackProgress.ts",
-        "frontend/src/pages/Terminal.tsx"
+        "frontend/index.html",
+        "frontend/src/App.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -23,12 +23,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-animated-terminal-output-to-the-terminal-page-so-that-command-responses-are-printed-character-by-character-or-line-by-line-with-a-typewriter-effect-making-the-output-feel-more-dramatic-and-authentic",
-      "featureTitle": "Add animated terminal output to the Terminal page so that command responses are printed character-by-character or line-by-line with a typewriter effect, making the output feel more dramatic and authentic.",
+      "featureId": "feature-create-a-dashboard-home-page-showing-a-free-fire-player-stats-overview-player-nickname-uid-level-rank-badge-k-d-ratio-win-rate-total-matches-played-and-headshot-percentage-display-stats-as-stylized-cards",
+      "featureTitle": "Create a Dashboard/Home page showing a Free Fire player stats overview: player nickname, UID, level, rank badge, K/D ratio, win rate, total matches played, and headshot percentage. Display stats as stylized cards.",
       "files": [
-        "frontend/src/components/TypewriterOutput.tsx",
-        "frontend/src/hooks/useTypewriter.ts",
-        "frontend/src/pages/Terminal.tsx"
+        "frontend/src/data/playerStats.ts",
+        "frontend/src/pages/Dashboard.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -39,6 +38,103 @@
       ],
       "testIds": [
         "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-weapons-page-listing-popular-free-fire-weapons-e-g-m1014-ak-m82b-groza-scar-with-stats-bars-for-damage-range-fire-rate-reload-speed-and-magazine-size-allow-filtering-by-weapon-type-ar-smg-sniper-shotgun-pistol",
+      "featureTitle": "Create a Weapons page listing popular Free Fire weapons (e.g., M1014, AK, M82B, Groza, SCAR) with stats bars for damage, range, fire rate, reload speed, and magazine size. Allow filtering by weapon type (AR, SMG, Sniper, Shotgun, Pistol).",
+      "files": [
+        "frontend/src/data/weapons.ts",
+        "frontend/src/pages/Weapons.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-characters-page-listing-free-fire-characters-e-g-alok-chrono-dimitri-k-skyler-with-their-special-abilities-ability-descriptions-and-ability-cooldown-duration-stats-each-character-card-should-show-name-ability-name-and-a-short-description",
+      "featureTitle": "Create a Characters page listing Free Fire characters (e.g., Alok, Chrono, Dimitri, K, Skyler) with their special abilities, ability descriptions, and ability cooldown/duration stats. Each character card should show name, ability name, and a short description.",
+      "files": [
+        "frontend/src/data/characters.ts",
+        "frontend/src/pages/Characters.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-match-history-page-showing-a-list-of-simulated-recent-match-entries-each-entry-should-display-map-name-placement-e-g-1-booyah-5-kills-damage-dealt-survival-time-and-match-mode-classic-clash-squad-ranked",
+      "featureTitle": "Create a Match History page showing a list of simulated recent match entries. Each entry should display: map name, placement (e.g., #1 Booyah!, #5), kills, damage dealt, survival time, and match mode (Classic, Clash Squad, Ranked).",
+      "files": [
+        "frontend/src/data/matchHistory.ts",
+        "frontend/src/pages/Matches.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-bottom-navigation-bar-with-tabs-for-home-dashboard-weapons-characters-and-matches-the-active-tab-should-be-visually-highlighted-with-the-free-fire-accent-color",
+      "featureTitle": "Create a bottom navigation bar with tabs for: Home (Dashboard), Weapons, Characters, and Matches. The active tab should be visually highlighted with the Free Fire accent color.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/BottomNav.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-cohesive-free-fire-themed-visual-design-across-the-entire-app-dark-background-near-black-orange-amber-gold-accent-colors-military-tactical-typography-subtle-fire-or-energy-glow-effects-on-key-ui-elements-and-a-header-showing-the-free-fire-panel-logo-title",
+      "featureTitle": "Apply a cohesive Free Fire-themed visual design across the entire app: dark background (near-black), orange/amber/gold accent colors, military/tactical typography, subtle fire or energy glow effects on key UI elements, and a header showing the Free Fire Panel logo/title.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
       ],
       "confidence": "high"
     }

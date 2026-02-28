@@ -1,63 +1,157 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-28T19:51:38.933Z",
+  "generatedAt": "2026-02-28T22:55:28.744Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 8,
+    "implemented": 7,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add an animated hacking progress bar to the Terminal page that triggers when the 'hack' command is entered, showing a multi-stage progress sequence with labels like 'Bypassing firewall...', 'Injecting payload...', 'Extracting data...' and a dramatic completion message.",
+        "summary": "Rebuild the application as a Free Fire game panel app. Replace all existing hacker/terminal theme content with a Free Fire-themed interface. The app should feel like an in-game companion panel for Free Fire players.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useHackProgress.ts",
-          "frontend/src/components/HackProgressBar.tsx",
-          "frontend/src/hooks/useCommandProcessor.ts",
-          "frontend/src/pages/Terminal.tsx"
+          "frontend/index.html",
+          "frontend/src/App.tsx",
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useHackProgress.ts",
-          "frontend/src/components/HackProgressBar.tsx",
-          "frontend/src/hooks/useCommandProcessor.ts",
-          "frontend/src/pages/Terminal.tsx"
+          "frontend/index.html",
+          "frontend/src/App.tsx",
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Add animated terminal output to the Terminal page so that command responses are printed character-by-character or line-by-line with a typewriter effect, making the output feel more dramatic and authentic.",
+        "summary": "Create a Dashboard/Home page showing a Free Fire player stats overview: player nickname, UID, level, rank badge, K/D ratio, win rate, total matches played, and headshot percentage. Display stats as stylized cards.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useTypewriter.ts",
-          "frontend/src/components/TypewriterOutput.tsx",
-          "frontend/src/pages/Terminal.tsx",
-          "frontend/src/hooks/useTerminalScript.ts"
+          "frontend/src/pages/Dashboard.tsx",
+          "frontend/src/data/playerStats.ts"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useTypewriter.ts",
-          "frontend/src/components/TypewriterOutput.tsx",
-          "frontend/src/pages/Terminal.tsx"
+          "frontend/src/pages/Dashboard.tsx",
+          "frontend/src/data/playerStats.ts"
         ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Create a Weapons page listing popular Free Fire weapons (e.g., M1014, AK, M82B, Groza, SCAR) with stats bars for damage, range, fire rate, reload speed, and magazine size. Allow filtering by weapon type (AR, SMG, Sniper, Shotgun, Pistol).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Weapons.tsx",
+          "frontend/src/data/weapons.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Weapons.tsx",
+          "frontend/src/data/weapons.ts"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Create a Characters page listing Free Fire characters (e.g., Alok, Chrono, Dimitri, K, Skyler) with their special abilities, ability descriptions, and ability cooldown/duration stats. Each character card should show name, ability name, and a short description.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Characters.tsx",
+          "frontend/src/data/characters.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Characters.tsx",
+          "frontend/src/data/characters.ts"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Create a Match History page showing a list of simulated recent match entries. Each entry should display: map name, placement (e.g., #1 Booyah!, #5), kills, damage dealt, survival time, and match mode (Classic, Clash Squad, Ranked).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Matches.tsx",
+          "frontend/src/data/matchHistory.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Matches.tsx",
+          "frontend/src/data/matchHistory.ts"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Create a bottom navigation bar with tabs for: Home (Dashboard), Weapons, Characters, and Matches. The active tab should be visually highlighted with the Free Fire accent color.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/BottomNav.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/BottomNav.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Apply a cohesive Free Fire-themed visual design across the entire app: dark background (near-black), orange/amber/gold accent colors, military/tactical typography, subtle fire or energy glow effects on key UI elements, and a header showing the Free Fire Panel logo/title.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Clear all backend Motoko actor logic and replace it with a minimal actor that exposes no endpoints, since all data is frontend-only and statically defined.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/index.html",
+    "frontend/public/assets/generated/ff-header-banner.dim_1200x300.png",
+    "frontend/public/assets/generated/ff-panel-logo.dim_256x256.png",
+    "frontend/public/assets/generated/ff-weapon-icons.dim_512x128.png",
+    "frontend/src/App.tsx",
+    "frontend/src/components/BottomNav.tsx",
     "frontend/src/components/HackProgressBar.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/MatrixRain.tsx",
+    "frontend/src/components/ScanlineOverlay.tsx",
     "frontend/src/components/TypewriterOutput.tsx",
+    "frontend/src/data/characters.ts",
+    "frontend/src/data/matchHistory.ts",
+    "frontend/src/data/playerStats.ts",
+    "frontend/src/data/weapons.ts",
     "frontend/src/hooks/useCommandProcessor.ts",
+    "frontend/src/hooks/useFakeScan.ts",
     "frontend/src/hooks/useHackProgress.ts",
+    "frontend/src/hooks/useTerminalScript.ts",
     "frontend/src/hooks/useTypewriter.ts",
     "frontend/src/index.css",
+    "frontend/src/pages/Characters.tsx",
+    "frontend/src/pages/Dashboard.tsx",
+    "frontend/src/pages/Matches.tsx",
+    "frontend/src/pages/Profile.tsx",
+    "frontend/src/pages/Scanner.tsx",
     "frontend/src/pages/Terminal.tsx",
+    "frontend/src/pages/Weapons.tsx",
+    "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
